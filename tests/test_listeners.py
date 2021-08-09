@@ -32,7 +32,7 @@ class TestListeners(tb.ClusterTestCase):
                     q2.put_nowait(args)
 
                 async def async_listener3(*args):
-                    q3.put_nowait(args)
+                    await q3.put(args)
 
                 await con.add_listener('test', listener1)
                 await con.add_listener('test', listener2)
